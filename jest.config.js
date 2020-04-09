@@ -1,13 +1,14 @@
 module.exports = {
   verbose: true,
-  testRegex: '^.+\\.test\\.[jt]s?$',
+  testRegex: '^.+\\.test\\.[jt]sx?$',
   transform: {
-    '^.+\\.[jt]s?$': '<rootDir>/node_modules/babel-jest',
+    '^.+\\.[jt]sx?$': '<rootDir>/node_modules/babel-jest',
   },
   moduleDirectories: ['node_modules', 'src'],
-  moduleFileExtensions: ['ts', 'js', 'json'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   moduleNameMapper: {
     '^~/(.*)': '<rootDir>/src/$1',
+    '\\.local\\.css$': 'identity-obj-proxy',
   },
   coverageReporters: ['lcov'],
   coveragePathIgnorePatterns: ['/node_modules/'],

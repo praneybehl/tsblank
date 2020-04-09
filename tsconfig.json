@@ -10,6 +10,7 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "lib": ["esnext", "dom"],
+    "jsx": "preserve",
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -27,7 +28,11 @@
     "strict": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true,
-    "target": "esnext"
+    "target": "esnext",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/babel-plugin-jsx-dom-expressions"
+    ]
   },
   "exclude": ["**/node_modules"],
   "include": ["./src", "./*.config.ts", "./*.config.js"]

@@ -1,0 +1,23 @@
+.root {
+  display: flex;
+  align-items: center;
+  padding: 0.6em;
+}
+
+.count-display {
+  margin: 0 0.6em;
+}
+
+.control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8em;
+  height: 1.8em;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  font: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  appearance: none;
+}

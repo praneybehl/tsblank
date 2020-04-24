@@ -3,9 +3,10 @@ import path from 'path';
 import { ConfigurationFactory } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-const envMatches = (matcher: RegExp) => (
-  env?: Parameters<ConfigurationFactory>[0],
-) => matcher.test(typeof env === 'string' ? env : String(env?.NODE_ENV));
+type WebpackEnv = Parameters<ConfigurationFactory>[0];
+
+const envMatches = (matcher: RegExp) => (env?: WebpackEnv) =>
+  matcher.test(typeof env === 'string' ? env : String(env?.NODE_ENV));
 
 const fromRoot = path.resolve.bind(null, __dirname);
 const isProd = envMatches(/production/);
@@ -14,7 +15,7 @@ const configuration: ConfigurationFactory = (env) => ({
   mode: isProd(env) ? 'production' : 'development',
   devtool: isProd(env) ? 'source-map' : 'inline-source-map',
   entry: {
-    app: ['./src/index.ts'],
+    app: ['./src/index.tsx'],
   },
   output: {
     filename: isProd(env) ? '[name].[chunkhash].js' : '[name].js',
@@ -23,7 +24,7 @@ const configuration: ConfigurationFactory = (env) => ({
   module: {
     rules: [
       {
-        test: /\.[jt]s?$/,
+        test: /\.[jt]sx?$/,
         exclude: fromRoot('node_modules'),
         use: [{ loader: 'babel-loader' }],
       },
@@ -42,7 +43,7 @@ const configuration: ConfigurationFactory = (env) => ({
     }),
   ],
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
 });
 

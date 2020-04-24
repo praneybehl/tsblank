@@ -14,7 +14,14 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   env: { es6: true, node: true, browser: false },
   settings: { 'import/resolver': 'babel-module' },
-  plugins: ['@typescript-eslint', 'filenames', 'import', 'jest', 'prettier'],
+  plugins: [
+    '@typescript-eslint',
+    'filenames',
+    'import',
+    'react',
+    'jest',
+    'prettier',
+  ],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
@@ -25,6 +32,7 @@ module.exports = {
     'plugin:jest/style',
     'prettier',
     'prettier/@typescript-eslint',
+    'prettier/react',
   ],
   rules: {
     'camelcase': 'off',
@@ -58,6 +66,7 @@ module.exports = {
         'newlines-between': 'always',
       },
     ],
+    'react/jsx-filename-extension': ['error', { extensions: ['.tsx', '.jsx'] }],
     'prettier/prettier': 'warn',
   },
   overrides: [
@@ -65,6 +74,12 @@ module.exports = {
       files: ['*.config.*'],
       rules: {
         'filenames/match-exported': 'off',
+      },
+    },
+    {
+      files: ['**/*.tsx', '**/*.jsx'],
+      rules: {
+        'react/jsx-uses-vars': 'error',
       },
     },
     {

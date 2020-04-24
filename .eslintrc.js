@@ -13,17 +13,30 @@ const devDependencies = {
 module.exports = {
   parser: '@typescript-eslint/parser',
   env: { es6: true, node: true, browser: false },
-  settings: { 'import/resolver': 'babel-module' },
-  plugins: ['@typescript-eslint', 'filenames', 'import', 'jest', 'prettier'],
+  settings: {
+    'react': { version: 'detect' },
+    'import/resolver': 'babel-module',
+  },
+  plugins: [
+    '@typescript-eslint',
+    'filenames',
+    'import',
+    'react',
+    'react-hooks',
+    'jest',
+    'prettier',
+  ],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:import/recommended',
     'plugin:import/typescript',
+    'plugin:react/recommended',
     'plugin:jest/recommended',
     'plugin:jest/style',
     'prettier',
+    'prettier/react',
     'prettier/@typescript-eslint',
   ],
   rules: {
@@ -58,6 +71,10 @@ module.exports = {
         'newlines-between': 'always',
       },
     ],
+    'react/jsx-filename-extension': ['error', { extensions: ['.tsx', '.jsx'] }],
+    'react/prop-types': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
     'prettier/prettier': 'warn',
   },
   overrides: [
